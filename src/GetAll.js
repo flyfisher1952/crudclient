@@ -7,7 +7,7 @@ class GetAll extends React.Component {
         this.state = { products: [] };
     }
 
-    componentDidMount() {
+    getAll() {
         const axios = require("axios");
         axios
             .get("http://localhost:8080/api/products")
@@ -17,6 +17,10 @@ class GetAll extends React.Component {
             .catch(error => {
                 console.error("GET Error - ", error);
             });
+    }
+
+    componentDidMount() {
+        this.getAll();
     }
 
     render() {
@@ -34,6 +38,9 @@ class GetAll extends React.Component {
                 <table>
                     <tbody>{list}</tbody>
                 </table>
+                <div>
+                    <button onClick={this.getAll}>Refresh</button>
+                </div>
             </div>
         );
     }

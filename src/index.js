@@ -4,6 +4,7 @@ import "./index.css";
 import Get from "./Get";
 import GetAll from "./GetAll";
 import Create from "./Create";
+import Update from "./Update";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,12 @@ root.render(
                     <td>
                         <h1>Add a Product</h1>
                         <Create />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Update a Product</h1>
+                        <Update />
                     </td>
                 </tr>
                 <tr>
