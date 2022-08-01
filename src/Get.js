@@ -4,7 +4,7 @@ import React from "react";
 class Get extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { product: {} };
+        this.state = { product: {}, id: 0 };
     }
 
     onIdChange = e => {
@@ -26,17 +26,26 @@ class Get extends React.Component {
     render() {
         return (
             <div>
-                <label>Enter the Product ID</label>
-                <input onChange={this.onIdChange}></input>
-                <br />
-                <button onClick={this.getProduct.bind(this)}>Get Product</button>
-                <p>
-                    Name: {this.state.product.name}
-                    <br />
-                    Description: {this.state.product.description}
-                    <br />
-                    Price: {this.setState.product.price}
-                </p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label>Enter the Product ID</label>
+                            </td>
+                            <td>
+                                <input onChange={this.onIdChange}></input>
+                            </td>
+                            <td>
+                                <button onClick={this.getProduct.bind(this)}>Get Product</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name: {this.state.product.name}</td>
+                            <td>Description: {this.state.product.description}</td>
+                            <td> Price: {this.state.product.price}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         );
     }

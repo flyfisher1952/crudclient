@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 
@@ -21,29 +20,19 @@ class GetAll extends React.Component {
     }
 
     render() {
+        var list = this.state.products.map(product => (
+            <tr>
+                <td>{product.id}</td>
+                <td>{product.name}</td>
+                <td>{product.description}</td>
+                <td>{product.price}</td>
+            </tr>
+        ));
         return (
-            <div className='App'>
-                <header className='App-header'> All Products </header>
+            <div>
+                <h1> All Products </h1>
                 <table>
-                    <thead>
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Description</td>
-                            <td>Price</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        for(var product in this.state.products)
-                        {
-                            <tr>
-                                <td>product.id</td>
-                                <td>product.name</td>
-                                <td>product.description</td>
-                                <td>product.price</td>
-                            </tr>
-                        }
-                    </tbody>
+                    <tbody>{list}</tbody>
                 </table>
             </div>
         );

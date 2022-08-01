@@ -1,17 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import Get from "./Get";
+import GetAll from "./GetAll";
+import Create from "./Create";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <Get />
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>Get a Product</h1>
+                        <Get />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Add a Product</h1>
+                        <Create />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <GetAll />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
