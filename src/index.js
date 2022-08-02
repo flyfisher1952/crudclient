@@ -1,40 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Get from "./Get";
-import GetAll from "./GetAll";
-import Create from "./Create";
-import Update from "./Update";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        <h1>Get a Product</h1>
-                        <Get />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h1>Add a Product</h1>
-                        <Create />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h1>Update a Product</h1>
-                        <Update />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <GetAll />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </React.StrictMode>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
 );

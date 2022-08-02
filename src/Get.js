@@ -1,54 +1,45 @@
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-class Get extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { product: {}, id: 0 };
-    }
+function Get() {
+    const [product, setProduct] = useState({});
 
-    onIdChange = e => {
-        this.setState({ id: e.target.value });
-    };
-
-    getProduct() {
+    function getProduct() {
         const axios = require("axios");
         axios
-            .get("http://localhost:8080/api/products/" + this.state.id)
+            .get("http://localhost:8080/api/products/" + product.id)
             .then(resp => {
-                this.setState({ product: resp.data[0] });
+                setProduct(resp.data[0]);
             })
             .catch(error => {
                 console.error("Get by ID Error - ", error);
             });
     }
 
-    render() {
-        return (
-            <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label>Enter the Product ID</label>
-                            </td>
-                            <td>
-                                <input onChange={this.onIdChange}></input>
-                            </td>
-                            <td>
-                                <button onClick={this.getProduct.bind(this)}>Get Product</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Name: {this.state.product.name}</td>
-                            <td>Description: {this.state.product.description}</td>
-                            <td> Price: {this.state.product.price}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label>Enter the Product ID</label>
+                        </td>
+                        <td>
+                            <input onChange={e => setProduct({ id: e.target.value })}></input>
+                        </td>
+                        <td>
+                            <button onClick={getProduct.bind(this)}>Get Product</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name: {product.name}</td>
+                        <td>Description: {product.description}</td>
+                        <td> Price: {product.price}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    );
 }
 
 export default Get;

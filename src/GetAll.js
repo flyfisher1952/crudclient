@@ -1,49 +1,45 @@
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-class GetAll extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { products: [] };
-    }
+function GetAll() {
+    const [products, setProducts] = useState([]);
 
-    getAll() {
+    function getProducts() {
         const axios = require("axios");
         axios
             .get("http://localhost:8080/api/products")
             .then(resp => {
-                this.setState({ products: resp.data });
+                setProducts(resp.data);
             })
             .catch(error => {
-                console.error("GET Error - ", error);
+                console.error("GetAll Error - ", error);
             });
     }
 
-    componentDidMount() {
-        this.getAll();
-    }
+    useEffect(() => {
+        getProducts();
+    });
 
-    render() {
-        var list = this.state.products.map(product => (
-            <tr>
-                <td>{product.id}</td>
-                <td>{product.name}</td>
-                <td>{product.description}</td>
-                <td>{product.price}</td>
-            </tr>
-        ));
-        return (
+    var list = products.map(product => (
+        <tr>
+            <td>{product.id}</td>
+            <td>{product.name}</td>
+            <td>{product.description}</td>
+            <td>{product.price}</td>
+        </tr>
+    ));
+
+    return (
+        <div>
+            <h1> All Products </h1>
+            <table>
+                <tbody>{list}</tbody>
+            </table>
             <div>
-                <h1> All Products </h1>
-                <table>
-                    <tbody>{list}</tbody>
-                </table>
-                <div>
-                    <button onClick={this.getAll}>Refresh</button>
-                </div>
+                <button onClick={getProducts}>Refresh</button>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default GetAll;

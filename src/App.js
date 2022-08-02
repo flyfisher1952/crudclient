@@ -1,20 +1,40 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Route, Routes, Link } from "react-router-dom";
+import GetAll from "./GetAll";
+import Create from "./Create";
+import Update from "./Update";
+import Get from "./Get";
+import React from "react";
 
-function App() {
-    return (
-        <div className='App'>
-            <header className='App-header'>
-                <img src={logo} className='App-logo' alt='logo' />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+class App extends React.Component {
+    render() {
+        return (
+            <div className='App'>
+                <Routes>
+                    <Route exact path='/' element={<GetAll />} />
+                    <Route path='/Create' element={<Create />} />
+                    <Route path='/Update' element={<Update />} />
+                    <Route path='/Get' element={<Get />} />
+                </Routes>
+                <table>
+                    <tr>
+                        <td>
+                            <Link to='/'>View All</Link>
+                        </td>
+                        <td>
+                            <Link to='/Create'>Create</Link>
+                        </td>
+                        <td>
+                            <Link to='/Update'>Update</Link>
+                        </td>
+                        <td>
+                            <Link to='/Get'>Get</Link>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        );
+    }
 }
 
 export default App;
