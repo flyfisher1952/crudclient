@@ -10,7 +10,7 @@ function Create() {
     function createProduct(event) {
         const axios = require("axios");
         axios
-            .post("http://localhost:8080/api/products/", {
+            .post("http://localhost:8085/api/products/", {
                 id: id,
                 name: name,
                 description: description,

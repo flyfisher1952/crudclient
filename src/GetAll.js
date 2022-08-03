@@ -7,7 +7,7 @@ function GetAll() {
     function getProducts() {
         const axios = require("axios");
         axios
-            .get("http://localhost:8080/api/products")
+            .get("http://localhost:8085/api/products")
             .then(resp => {
                 setProducts(resp.data);
             })

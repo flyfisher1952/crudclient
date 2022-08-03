@@ -15,7 +15,7 @@ class Update extends React.Component {
         console.log("Fetching Product for ID == " + e.target.value);
         const axios = require("axios");
         axios
-            .get("http://localhost:8080/api/products/" + e.target.value)
+            .get("http://localhost:8085/api/products/" + e.target.value)
             .then(resp => {
                 this.setState({ product: resp.data[0] });
                 this.setState({ id: this.state.product.id });
@@ -45,7 +45,7 @@ class Update extends React.Component {
     updateProduct(event) {
         const axios = require("axios");
         axios
-            .put("http://localhost:8080/api/products/", {
+            .put("http://localhost:8085/api/products/", {
                 id: this.state.id,
                 name: this.state.name,
                 description: this.state.description,
