@@ -1,18 +1,20 @@
 import "./App.css";
 import React, { useState } from "react";
 
-function Get() {
+function Delete() {
     const [product, setProduct] = useState({});
+    const [message, setMessage] = useState("");
 
     function getProduct() {
         const axios = require("axios");
+
         axios
-            .get("http://localhost:8085/api/products/" + product.id)
+            .delete("http://localhost:8085/api/products/" + product.id)
             .then(resp => {
-                setProduct(resp.data[0]);
+                setMessage(resp.data.delete);
             })
             .catch(error => {
-                console.error("Get by ID Error - ", error);
+                console.error("Delete by ID Error - ", error);
             });
     }
 
@@ -28,13 +30,9 @@ function Get() {
                             <input onChange={e => setProduct({ id: e.target.value })}></input>
                         </td>
                         <td>
-                            <button onClick={getProduct.bind(this)}>Get Product</button>
+                            <button onClick={getProduct.bind(this)}>Delete Product</button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>Name: {product.name}</td>
-                        <td>Description: {product.description}</td>
-                        <td> Price: {product.price}</td>
+                        <td>{message}</td>
                     </tr>
                 </tbody>
             </table>
@@ -42,4 +40,4 @@ function Get() {
     );
 }
 
-export default Get;
+export default Delete;

@@ -5,6 +5,7 @@ import Create from "./Create";
 import Update from "./Update";
 import Get from "./Get";
 import React from "react";
+import Delete from "./Delete";
 
 class App extends React.Component {
     render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
                     <Route path='/Create' element={<Create />} />
                     <Route path='/Update' element={<Update />} />
                     <Route path='/Get' element={<Get />} />
+                    <Route path='/Delete' element={<Delete />} />
                 </Routes>
                 <table>
                     <tr>
@@ -29,6 +31,9 @@ class App extends React.Component {
                         </td>
                         <td>
                             <Link to='/Get'>Get</Link>
+                        </td>
+                        <td>
+                            <Link to='/Delete'>Delete</Link>
                         </td>
                     </tr>
                 </table>
